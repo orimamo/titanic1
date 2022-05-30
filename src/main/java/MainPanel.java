@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainPanel extends JPanel {
@@ -14,12 +15,20 @@ public class MainPanel extends JPanel {
 
     public MainPanel (int x, int y, int width, int height) {
         File file = new File(Constants.PATH_TO_DATA_FILE); //this is the path to the data file
-//      List<Passenger> passengerList=new ArrayList<>();
+      List<Passenger> passengerList=new ArrayList<>();
         try {
             Scanner scanner=new Scanner(file);
+            int i=0;
             while (scanner.hasNextLine()){
-              String passenger=scanner.nextLine();
-              
+                String passengerData = scanner.nextLine();
+                if(i==0){
+                    i++;
+                }else {
+//                    String passengerData = scanner.nextLine();
+                    Passenger passenger1 = new Passenger(passengerData);
+                    passengerList.add(passenger1);
+
+                }
             }
         }catch (FileNotFoundException e){
             e.printStackTrace();
@@ -39,7 +48,4 @@ public class MainPanel extends JPanel {
         });
     }
 
-    public static void readFromFile(String csvFile) {
-
-    }
 }
