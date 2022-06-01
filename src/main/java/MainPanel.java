@@ -1,9 +1,8 @@
+import com.opencsv.CSVWriter;
+
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -127,12 +126,20 @@ public class MainPanel extends JPanel {
         if (level == 1) {
             afterFilter=this.passengerList.stream().filter(passenger -> passenger.getpClass()==1).collect(Collectors.toList());
             System.out.println(afterFilter);
+            try {
+                write(afterFilter);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
         }
         if (level == 2) {
             afterFilter=this.passengerList.stream().filter(passenger -> passenger.getpClass()==2).collect(Collectors.toList());
+            System.out.println(afterFilter);
         }
         if (level == 3) {
             afterFilter=this.passengerList.stream().filter(passenger -> passenger.getpClass()==3).collect(Collectors.toList());
+            System.out.println(afterFilter);
         }
         return afterFilter;
     }
@@ -141,7 +148,38 @@ public class MainPanel extends JPanel {
         List<Passenger> afterFilter=new ArrayList<>();
         afterFilter=this.passengerList.stream().filter(passenger -> passenger.getPassengerId()>min && passenger.getPassengerId()<max).collect(Collectors.toList());
         return afterFilter;
+
     }
+
+    public static void write(List<Passenger> list) throws IOException {
+        File filteredFile =new File("/Users/ranhazan/Desktop/filteredFile.csv");
+        FileWriter outputFile = new FileWriter(filteredFile);
+        CSVWriter writer=new CSVWriter(outputFile);
+        List<String[]> x=new LinkedList<>();
+        String menuBar="PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked";
+        String[] menuBarArray=menuBar.split(",");
+        x.add(menuBarArray);
+        for (int i=0;i<list.size();i++) {
+            String[] s=new String[12];
+            Passenger passenger= list.get(i);
+            s[0]=String.valueOf( passenger.getPassengerId());
+            s[1]=String.valueOf( passenger.getSurvived());
+            s[2]=String.valueOf( passenger.getpClass());
+            s[3]=passenger.getName();
+            s[4]=passenger.getSex();
+            s[5]=String.valueOf( passenger.getAge());
+            s[6]=String.valueOf(passenger.getSibSp());
+            s[7]=String.valueOf( passenger.getParch());
+            s[8]=String.valueOf( passenger.getTicket());
+            s[9]=String.valueOf( passenger.getFare());
+            s[10]=String.valueOf( passenger.getCabin());
+            s[11]=String.valueOf( passenger.getEmbarked());
+            x.add(s);
+        }
+        writer.writeAll(x);
+        writer.close();
+    }
+
 
 
 }
