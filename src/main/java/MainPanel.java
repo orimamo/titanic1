@@ -110,5 +110,57 @@ public class MainPanel extends JPanel {
         }
         return afterFilter;
     }
-
+    public List<Passenger> searchName(String name){
+        List<Passenger> afterFilter=new ArrayList<>();
+//        for (Passenger p:passengerList) {
+//            if (p.getName().contains(name)) {
+//                afterFilter.add((Passenger) this.passengerList);
+//            }
+//        }
+        afterFilter=this.passengerList.stream().filter(passenger -> passenger.getName().contains(name)).collect(Collectors.toList());
+        return afterFilter;
+    }
+    //SibSp
+    public List<Passenger> searchSibSp(int numSibSp){
+        List<Passenger> afterFilter=new ArrayList<>();
+        for (Passenger p:passengerList) {
+            if (p.getSibSp()==numSibSp) {
+                afterFilter.add((Passenger) this.passengerList);
+            }
+        }
+        return afterFilter;
+    }
+    //Parch
+    public List<Passenger> searchParch(int numParch){
+        List<Passenger> afterFilter=new ArrayList<>();
+        for (Passenger p:passengerList) {
+            if (p.getSibSp()==numParch) {
+                afterFilter.add((Passenger) this.passengerList);
+            }
+        }
+        return afterFilter;
+    }
+    //Ticket
+    public List<Passenger> searchTicket(int numTicket){
+        String strNumTicket = ""+numTicket;
+        List<Passenger> afterFilter=new ArrayList<>();
+        for (Passenger p:passengerList) {
+            if (p.getTicket().contains(strNumTicket)) {
+                afterFilter.add((Passenger) this.passengerList);
+            }
+        }
+        return afterFilter;
+    }
+    //Cabin
+    public List<Passenger> searchCabin(int numCabin){
+        String strNumCabin = ""+numCabin;
+        List<Passenger> afterFilter=new ArrayList<>();
+        for (Passenger p:passengerList) {
+            if (p.getTicket().contains(strNumCabin)) {
+                afterFilter.add((Passenger) this.passengerList);
+            }
+        }
+        return afterFilter;
+    }
+    //
 }
