@@ -48,4 +48,118 @@ public class Passenger {
         nameNew= lastName[1]+ " " + firstName[0];
         return nameNew;
     }
+
+    public int getPassengerId() {
+        return passengerId;
+    }
+
+    public int getSurvived() {
+        return survived;
+    }
+
+    public int getpClass() {
+        return pClass;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getSibSp() {
+        return sibSp;
+    }
+
+    public int getParch() {
+        return parch;
+    }
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public double getFare() {
+        return fare;
+    }
+
+    public int getCabin() {
+        return cabin;
+    }
+
+    public String getEmbarked() {
+        return embarked;
+    }
+
+    public void setPassengerId(int passengerId) {
+        this.passengerId = passengerId;
+    }
+
+    public void setSurvived(int survived) {
+        this.survived = survived;
+    }
+
+    public void setpClass(int pClass) {
+        this.pClass = pClass;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setSibSp(int sibSp) {
+        this.sibSp = sibSp;
+    }
+
+    public void setParch(int parch) {
+        this.parch = parch;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public void setFare(double fare) {
+        this.fare = fare;
+    }
+
+    public void setCabin(int cabin) {
+        this.cabin = cabin;
+    }
+
+    public void setEmbarked(String embarked) {
+        this.embarked = embarked;
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                passengerId +
+                "," + survived +
+                "," + pClass +
+                "," + name + '\'' +
+                "," + sex + '\'' +
+                ",=" + age +
+                "," + sibSp +
+                "," + parch +
+                "," + ticket + '\'' +
+                "," + fare +
+                "," + cabin +
+                "," + embarked + '\'' +
+                '}'+ "\n";
+    }
 }
