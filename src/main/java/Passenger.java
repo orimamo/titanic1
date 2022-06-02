@@ -1,4 +1,6 @@
+import javax.management.StringValueExp;
 import java.io.File;
+import java.lang.invoke.StringConcatException;
 import java.lang.reflect.Array;
 
 public class Passenger {
@@ -12,7 +14,7 @@ public class Passenger {
     private int parch;
     private String ticket;
     private double fare;
-    private int cabin;
+    private String cabin;
     private String embarked;
 
     public Passenger(String passengerDetails) {
@@ -31,10 +33,10 @@ public class Passenger {
             this.parch = Integer.valueOf(data[8]);
             this.ticket = data[9];
             this.fare = Double.valueOf(data[10]);
-            this.cabin = Integer.valueOf(data[11]);
+            this.cabin = data[11];
             this.embarked = data[12];
-        } catch (NumberFormatException e) {
-            this.cabin = 0;
+        } catch (Exception e) {
+            this.cabin = "";
         }
         this.name=getFormattedName(this.name);
     }
@@ -89,7 +91,7 @@ public class Passenger {
         return fare;
     }
 
-    public int getCabin() {
+    public String getCabin() {
         return cabin;
     }
 
@@ -137,7 +139,7 @@ public class Passenger {
         this.fare = fare;
     }
 
-    public void setCabin(int cabin) {
+    public void setCabin(String cabin) {
         this.cabin = cabin;
     }
 
