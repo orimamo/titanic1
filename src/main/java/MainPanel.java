@@ -251,9 +251,9 @@ public class MainPanel extends JPanel {
         statistic.addActionListener((event)->{
             try {
                 String statistics="";
-                statistics=statistics+classStatic(afterFilter) + "\n-------------";
-                statistics=statistics+genderStatic(afterFilter) + "\n-------------";
-                statistics=statistics+ageStatic(afterFilter) + "\n------------";
+                statistics=statistics+classStatic(this.passengerList) + "\n-------------";
+                statistics=statistics+genderStatic(this.passengerList) + "\n-------------";
+                statistics=statistics+ageStatic(this.passengerList) + "\n------------";
 //                statistics=statistics+staticParchSibSp(afterFilter) + "\n-----------";
 
 
